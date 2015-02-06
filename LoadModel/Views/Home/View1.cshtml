@@ -1,0 +1,31 @@
+﻿<div id="viewModel" data-modeltype="@ViewBag.ModelType">
+    <div>
+        <input type="text" value="@Model.ID"/>
+    </div>
+    <div>
+        <input type="text" value="@Model.Name"/>
+    </div>
+</div>
+
+<script>
+    (function ($) {
+
+        $.pluginManager.extend('model', {
+            get: get
+        });
+
+        function get() {
+            var $container = this.eq(0),
+                $textboxes = $container.find(':text'),
+                modelType = $container.find('>div').attr('data-modeltype');
+
+            return {
+                type: modelType,
+                data: {
+                    id: $textboxes.eq(0).val(),
+                    name: $textboxes.eq(1).val()
+                }
+            };
+        }
+    }(jQuery));
+</script>

@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <case index="1" viewname="View1" modelname="LoadModel.Models.Index.Model1"></case>
+  <case index="2" viewname="View2" modelname="LoadModel.Models.Index.Model2"></case>
+</root>

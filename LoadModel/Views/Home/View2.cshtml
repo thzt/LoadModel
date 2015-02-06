@@ -1,0 +1,39 @@
+﻿<div id="viewModel" data-modeltype="@ViewBag.ModelType">
+    <div>
+        <input type="radio" name="sex" value="0" 
+            @if (Model.Sex)
+            {
+                @:checked
+            }/><label>男</label>
+        <input type="radio" name="sex" value="1" 
+            @if (!Model.Sex)
+            {
+                @:checked
+            }/><label>女</label>
+    </div>
+    <div>
+        <input type="text" value="@Model.Hobby"/>
+    </div>
+</div>
+
+<script>
+    (function ($) {
+
+        $.pluginManager.extend('model', {
+            get: get
+        });
+
+        function get() {
+            var $container = this.eq(0),
+                modelType = $container.find('>div').attr('data-modeltype');
+
+            return {
+                type: modelType,
+                data: {
+                    sex: $container.find(':radio').eq(0).is(':checked'),
+                    hobby: $container.find(':text').eq(0).val()
+                }
+            };
+        }
+    }(jQuery));
+</script>
